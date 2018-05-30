@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import layout from '../templates/components/g-table';
+// import layout from '../templates/components/g-table';
 import {
   computed
 } from '@ember/object';

@@ -1,0 +1,17 @@
+<ul>
+  {{#each columns as |column|}}
+  {{#if column.title}}
+    {{#if column.component}}
+      <li>
+        <strong>{{column.title}}: </strong>   {{component column.component record=data}}
+      </li>
+      {{else}}
+      {{#if column.propertyName}}
+      <li>
+        <strong>{{column.title}}: </strong>   {{get data column.propertyName}}
+      </li>
+    {{/if}}
+    {{/if}}
+  {{/if}}
+  {{/each}}
+</ul>

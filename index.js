@@ -1,6 +1,7 @@
-/* eslint-env node */
 'use strict';
 
+var path = require('path');
+
 module.exports = {
-  name: 'ember-global-table'
+  name: 'ember-global-table',
 };

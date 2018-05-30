@@ -1,0 +1,111 @@
+<table class={{if (and className scrollable) (concat "scrollable " className ) (if scrollable "scrollable table" (if className className "table"))}}>
+
+  {{!-- TABLE HEADER  --}}
+  <thead>
+    <tr>
+      {{#if isDesktop}}
+      {{#if sortableColumns}}
+      {{#each columns as |column|}}
+        {{#if (or (eq column.display 'All') (eq column.display 'Desktop'))}}
+        <th style={{html-safe (if (and scrollable column.width) (concat 'width:' column.width) (if scrollable (concat 'width:' calculatedWidth)))}} class={{concat "table-header " column.headerClass}}  {{action "onColumnClick" column.propertyName}}>{{column.title}}</th>
+        {{/if}}
+      {{/each}}
+      {{else}}
+        {{#each columns as |column|}}
+          {{#if (or (eq column.display 'All') (eq column.display 'Desktop'))}}
+          <th style={{html-safe (if (and scrollable column.width) (concat 'width:' column.width) (if scrollable (concat 'width:' calculatedWidth)))}} class={{column.headerClass}}>{{column.title}}</th>
+          {{/if}}
+        {{/each}}
+        {{/if}}
+      {{else}}
+          {{#each columns as |column|}}
+            {{#if (or (eq column.display 'All') (eq column.display 'Mobile'))}}
+              <th style={{html-safe (if (and scrollable column.width) (concat 'width:' column.width) (if scrollable (concat 'width:' calculatedWidth)))}} class={{column.headerClass}}>{{column.title}}</th>
+            {{/if}}
+          {{/each}}
+      {{/if}}
+    </tr>
+  </thead>
+
+{{!-- TABLE BODY --}}
+  <tbody  style="height:{{height}}px; overflow-y: overlay;">
+    {{#if isDesktop}}
+      {{#if expandable}}
+        {{yield theData}}
+      {{else}}
+        {{#each sortedData as |theData|}}
+          <tr class={{theData.trClass}}>
+              {{#each columns as |column|}}
+                {{#if (not column.isCustom)}}
+                  {{#if (or (eq column.display 'All') (eq column.display 'Desktop'))}}
+                    <td style={{html-safe (if (and scrollable column.width) (concat 'width:' column.width) (if scrollable (concat 'width:' calculatedWidth)))}} class={{column.rowClass}}>
+                      {{#if column.propertyName}}
+                        {{#if column.component}}
+                          {{component column.component record=theData}}
+                        {{else}}
+                          {{get theData column.propertyName}}
+                        {{/if}}
+                      {{else if column.component}}
+                        {{component column.component record=theData}}
+                      {{/if}}
+                    </td>
+                  {{/if}}
+                {{/if}}
+              {{/each}}
+              {{#if isCustomRow}}
+                {{yield theData}}
+              {{/if}}
+            </tr>
+        {{else}}
+          <tr colspan={{columnsLength}} class="no-number">
+              <td style={{html-safe (if column.width (concat 'width:' column.width) (concat 'width:' calculatedWidth))}} colspan={{columnsLength}} >
+                No Records to Show
+              </td>
+            </tr>
+        {{/each}}
+      {{/if}}
+    {{else}}
+      {{#each sortedData as |theData|}}
+          <tr style="cursor: pointer" class={{theData.trClass}} {{action 'moreDetails' theData}}>
+            {{#each columns as |column|}}
+              {{#if (not column.isCustom)}}
+                {{#if (or (eq column.display 'All') (eq column.display 'Mobile'))}}
+                  <td style={{html-safe (if column.width (concat 'width:' column.width) (concat 'width:' calculatedWidth))}}  class={{column.rowClass}}>
+                    {{#if column.propertyName}}
+                      {{get theData column.propertyName}}
+                    {{/if}}
+                  </td>
+                {{/if}}
+              {{/if}}
+            {{/each}}
+          </tr>
+          {{#if theData.isOpenRow}}
+            <tr colspan={{columnsLength}} class="no-number">
+              <td style={{html-safe (if column.width (concat 'width:' column.width) (concat 'width:' calculatedWidth))}}  colspan={{columnsLength}} >
+                {{#if mobileViewComponent}}
+                  {{component mobileViewComponent data=theData columns=columns}}
+                {{else}}
+                  {{g-mobile-list data=theData columns=columns}}
+                {{/if}}
+              </td>
+            </tr>
+        {{/if}}
+        {{#if isCustomRow}}
+          {{yield theData}}
+        {{/if}}
+        {{else}}
+        <tr colspan={{columnsLength}} class="no-number">
+          <td style={{html-safe (if column.width (concat 'width:' column.width) (concat 'width:' calculatedWidth))}}  colspan={{columnsLength}} >
+            No Records to Show
+          </td>
+        </tr>
+      {{/each}}
+    {{/if}}
+  </tbody>
+
+  {{!-- TABLE FOOTER --}}
+  {{#if isFooter}}
+    {{yield "tfoot"}}
+  {{/if}}
+</table>
+{{!-- {{/if}} --}}

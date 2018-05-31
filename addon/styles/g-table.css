@@ -2,6 +2,7 @@
 
 .scrollable {
     width: 100%;
+    border-spacing: 0px !important;
 }
 
 .scrollable thead,

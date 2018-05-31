@@ -29,7 +29,10 @@
     height: 100px;
     overflow-y: overlay;
 }
-
+.g-table-scrollable td:last-child {
+  padding-right: 50px;
+  color: red;
+}
 .g-table th.sortable-table-header {
   cursor: pointer;
 }

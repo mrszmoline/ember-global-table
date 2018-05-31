@@ -8,8 +8,8 @@ module.exports = {
   },
 
   afterInstall: function() {
-    return this.addPackageToProject('ember-truth-helpers', '^2.0.0');
-    return this.addPackageToProject('ember-cli-string-helpers', '^1.8.1');
+    this.addPackageToProject('ember-truth-helpers', '^2.0.0');
+    this.addPackageToProject('ember-cli-string-helpers', '^1.8.1');
     return this.addPackageToProject('ember-responsive', '^3.0.0-beta.3');
 
   }

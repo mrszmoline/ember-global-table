@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 module.exports = {
   normalizeEntityName: function() {
@@ -8,7 +8,7 @@ module.exports = {
   },
 
   afterInstall: function() {
-    return this.addAddonsToProject(
+    return this.addAddonsToProject({
       packages: [{
           name: 'ember-truth-helpers'
         },
@@ -18,6 +18,7 @@ module.exports = {
         {
           name: 'ember-responsive'
         }
-      ]);
+      ]
+    });
   }
 };

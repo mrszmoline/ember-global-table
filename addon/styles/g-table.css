@@ -1,7 +1,17 @@
-
-body::-webkit-scrollbar {
-    width: 1px;
+::-webkit-scrollbar {
+    width: 12px;
 }
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
 
 .g-table-scrollable {
     width: 100%;
@@ -31,10 +41,6 @@ body::-webkit-scrollbar {
 .g-table-scrollable tbody {
     height: 100px;
     overflow-y: overlay;
-}
-.g-table-scrollable tr {
-  padding-right: 50px;
-  color: red;
 }
 .g-table th.sortable-table-header {
   cursor: pointer;

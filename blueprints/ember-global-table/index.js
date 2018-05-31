@@ -8,7 +8,7 @@ module.exports = {
   },
 
   afterInstall: function() {
-    return this.addAddonsToProject({
+    return this.addPackagesToProject({
       packages: [{
           name: 'ember-truth-helpers'
         },

@@ -6,8 +6,13 @@ import {
 import {
   set
 } from '@ember/object';
+import {
+  inject as service
+} from '@ember/service';
 
 export default Ember.Component.extend({
+  media: service(),
+
   layout,
   dir: 'asc',
   columns: null,
@@ -18,6 +23,7 @@ export default Ember.Component.extend({
   sortedData: computed.sort('data', 'sortProperties'),
   isCustom: false,
   isDesktop: computed('media.{isMobile,isDesktop,isTablet}', function() {
+    console.log(this.get('media'))
     if (this.get('media.isMobile') == true || this.get('media.isTablet') == true) {
       return false
     } else {

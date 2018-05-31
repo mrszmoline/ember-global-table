@@ -1,15 +1,15 @@
 @import "ember-bootstrap/bootstrap";
 
-.scrollable {
+.g-table-scrollable {
     width: 100%;
     border-spacing: 0px !important;
 }
 
-.scrollable thead,
-.scrollable tbody,
-.scrollable tr,
-.scrollable td,
-.scrollable th{
+.g-table-scrollable thead,
+.g-table-scrollable tbody,
+.g-table-scrollable tr,
+.g-table-scrollable td,
+.g-table-scrollable th{
   // display: block;
   float: left;
   width: 100%;
@@ -17,7 +17,7 @@
   padding: 0;
 }
 
-.scrollable tr:after {
+.g-table-scrollable tr:after {
   content: ' ';
   float: left;
   visibility: hidden;
@@ -25,11 +25,11 @@
   width: 100%;
 
 }
-.scrollable tbody {
+.g-table-scrollable tbody {
     height: 100px;
     overflow-y: overlay;
 }
 
-.scrollable th.sortable-table-header {
+.g-table th.sortable-table-header {
   cursor: pointer;
 }

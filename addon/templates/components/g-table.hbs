@@ -1,4 +1,3 @@
-HI
 <table class={{if (and className scrollable) (concat "scrollable " className ) (if scrollable "scrollable table" (if className className "table"))}}>
 
   {{!-- TABLE HEADER  --}}
@@ -29,7 +28,7 @@ HI
   </thead>
 
 {{!-- TABLE BODY --}}
-  <tbody  style="height:{{height}}px; overflow-y: overlay;">
+  <tbody  style={{html-safe (concat "overflow-y: overlay; height:" height)}}>
     {{#if isDesktop}}
       {{#if expandable}}
         {{yield theData}}

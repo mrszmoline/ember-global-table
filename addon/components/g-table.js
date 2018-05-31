@@ -1,5 +1,5 @@
 import Ember from 'ember';
-// import layout from '../templates/components/g-table';
+import layout from '../templates/components/g-table';
 import {
   computed
 } from '@ember/object';
@@ -8,7 +8,9 @@ import {
 } from '@ember/object';
 
 export default Ember.Component.extend({
+  layout,
   dir: 'asc',
+  columns: null,
   sort: null,
   sortProperties: computed('sort', 'dir', function() {
     return [this.get('sort') + ':' + this.get('dir')]
@@ -23,20 +25,25 @@ export default Ember.Component.extend({
     }
   }),
   columnsLength: computed(function() {
-    return this.get('columns').length
+    if (this.get('columns')) {
+
+      return this.get('columns').length
+    }
   }),
   calculatedWidth: computed(function() {
     let columns = this.get('columns');
     let counter = 0;
     let totalStartingWidths = 100;
-    columns.forEach((column) => {
-      if (!column.width) {
-        counter++
+    if (columns) {
+      columns.forEach((column) => {
+        if (!column.width) {
+          counter++
 
-      } else {
-        totalStartingWidths = totalStartingWidths - +column.width.replace('%', '')
-      }
-    })
+        } else {
+          totalStartingWidths = totalStartingWidths - +column.width.replace('%', '')
+        }
+      })
+    }
     let totalSpace = totalStartingWidths
     let numberOfColumns = counter
     return Math.round((+totalSpace / +numberOfColumns)) + '%'

@@ -7,7 +7,7 @@ module.exports = {
     // to us
   },
 
-  afterInstall: function() {
+  beforeInstall: function() {
     return this.addAddonsToProject([{
         name: 'ember-truth-helpers'
       },

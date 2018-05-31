@@ -7,16 +7,17 @@ module.exports = {
     // to us
   },
 
-  beforeInstall: function() {
-    return this.addAddonsToProject([{
-        name: 'ember-truth-helpers'
-      },
-      {
-        name: 'ember-cli-string-helpers'
-      },
-      {
-        name: 'ember-responsive'
-      }
-    ]);
+  afterInstall: function() {
+    return this.addAddonsToProject(
+      packages: [{
+          name: 'ember-truth-helpers'
+        },
+        {
+          name: 'ember-cli-string-helpers'
+        },
+        {
+          name: 'ember-responsive'
+        }
+      ]);
   }
 };

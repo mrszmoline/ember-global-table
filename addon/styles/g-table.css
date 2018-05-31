@@ -1,4 +1,7 @@
-@import "ember-bootstrap/bootstrap";
+
+body::-webkit-scrollbar {
+    width: 1px;
+}
 
 .g-table-scrollable {
     width: 100%;
@@ -29,7 +32,7 @@
     height: 100px;
     overflow-y: overlay;
 }
-.g-table-scrollable td:last-child {
+.g-table-scrollable tr {
   padding-right: 50px;
   color: red;
 }

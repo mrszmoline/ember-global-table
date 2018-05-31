@@ -29,3 +29,7 @@
     height: 100px;
     overflow-y: overlay;
 }
+
+.scrollable th.sortable-table-header {
+  cursor: pointer;
+}

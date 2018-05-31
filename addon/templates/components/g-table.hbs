@@ -7,7 +7,7 @@
       {{#if sortableColumns}}
       {{#each columns as |column|}}
         {{#if (or (eq column.display 'All') (eq column.display 'Desktop'))}}
-        <th style={{html-safe (if (and scrollable column.width) (concat 'width:' column.width) (if scrollable (concat 'width:' calculatedWidth)))}} class={{concat "table-header " column.headerClass}}  {{action "onColumnClick" column.propertyName}}>{{column.title}}</th>
+        <th style={{html-safe (if (and scrollable column.width) (concat 'width:' column.width) (if scrollable (concat 'width:' calculatedWidth)))}} class={{concat "sortable-table-header " column.headerClass}}  {{action "onColumnClick" column.propertyName}}>{{column.title}}</th>
         {{/if}}
       {{/each}}
       {{else}}

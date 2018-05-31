@@ -1,12 +1,17 @@
 {
   "name": "ember-global-table",
-  "version": "0.0.1",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.2",
+  "description": "Basic global table variations to use anywhere in your Ember app.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "table",
+    "fixed header",
+    "scroll",
+    "expandable rows",
+    "nested table"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Afton Bruggeman",
   "directories": {
     "doc": "doc",
     "test": "tests"

@@ -18,7 +18,10 @@ module.exports = {
         {
           name: 'ember-responsive'
         }
-      ]
+      ],
+      blueprintOptions: {
+        saveDev: true
+      }
     });
   }
 };

@@ -1,25 +1,17 @@
 # ember-global-table
 
-This README outlines the details of collaborating on this Ember addon.
+Table addon for global use across all applications.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-global-table`
-* `npm install`
+* `ember install ember-light-table`
 
-## Running
+## Documentation
 
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
-## Running Tests
-
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
+## Questions
 
 * `ember build`
 

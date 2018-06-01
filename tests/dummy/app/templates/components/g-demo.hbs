@@ -1,0 +1,70 @@
+{{!-- Feel free to remove this! --}}
+
+<h2>Simple Table</h2>
+{{g-table data=simpleData columns=columns}}
+
+<h2>Table With Sorting</h2>
+{{g-table data=simpleData columns=columns sortableColumns=true}}
+
+
+<h2>Table Custom Classes</h2>
+{{g-table data=simpleData columns=columnsCustomClasses sortableColumns=true}}
+
+<h2>Table Custom Rows</h2>
+{{#g-table isCustomRow=true  data=simpleData columns=columnsCustomRows sortableColumns=true as |table|}}
+  <td> <button>Delete</button></td>
+{{/g-table}}
+
+<h2>Table Custom Rows</h2>
+{{g-table isCustomRow=true  data=scrollableData columns=columnsScrollable sortableColumns=true scrollable=true}}
+<hr />
+
+<h2>Table Expandable Rows</h2>
+{{#g-table  data=complexData height="200px" columns=columnsExpandable expandable=true  as |table|}}
+      {{#each complexData as |category|}}
+        <tr onClick={{action 'openDetails' category}}>
+          <td style="width:10%" >
+            {{if category.isOpenRow "-" "+"}} <strong>{{category.category}}</strong>
+          </td>
+          <td style="width:90%" class="right">
+            {{category.totalSpent}}
+          </td>
+        </tr>
+        {{#if category.isOpenRow}}
+        {{#each category.years as |year|}}
+          <tr onClick={{action 'openDetails' year}}>
+            <td style="padding-left:20px; width:10%" >
+              {{if year.isOpenRow "-" "+"}} {{year.year}}
+            </td>
+            <td  style="width:90%" class="right">
+              {{year.totalSpent}}
+            </td>
+          </tr>
+          {{#if year.isOpenRow}}
+          {{#each year.locations as |location|}}
+            <tr onClick={{action 'openDetails' location}}>
+              <td style="padding-left:40px; width:10%" >
+                {{if location.isOpenRow "-" "+"}} {{location.location}}
+              </td>
+              <td style="width:90%" class="right">
+                {{location.totalSpent}}
+              </td>
+            </tr>
+            {{#if location.isOpenRow}}
+            {{#each location.values as |value|}}
+              <tr onClick={{action 'openDetails' value}}>
+                <td style="padding-left:60px; width:10%" >
+                  {{value.date}}
+                </td>
+                <td style="width:90%" class="right">
+                  {{value.value}}
+                </td>
+              </tr>
+              {{/each}}
+            {{/if}}
+            {{/each}}
+          {{/if}}
+          {{/each}}
+        {{/if}}
+      {{/each}}
+ {{/g-table}}

@@ -12,7 +12,7 @@ define('dummy/tests/app.lint-test', [], function () {
 
   QUnit.test('controllers/application.js', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'controllers/application.js should pass ESLint\n\n');
+    assert.ok(false, 'controllers/application.js should pass ESLint\n\n16:11 - \'scrollableObject\' is assigned a value but never used. (no-unused-vars)');
   });
 
   QUnit.test('resolver.js', function (assert) {

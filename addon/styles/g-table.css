@@ -30,7 +30,7 @@
 .g-table-scrollable td:last-child,
 .g-table-scrollable th:last-child {
   position: relative;
-  right: 20px;
+  padding-right: 20px;
 }
 .g-table th.sortable-table-header {
   cursor: pointer;
